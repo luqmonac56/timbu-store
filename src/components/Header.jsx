@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <>
       <div className="bg-[#190D40] py-3 px-3 text-center text-white">
-        <p className="w-[80%] my-0 mx-auto ">
+        <p className="w-[80%] text-xs my-0 mx-auto ">
           Free shipping on orders over ₦60,000 | 30-day money-back guarantee
         </p>
       </div>
