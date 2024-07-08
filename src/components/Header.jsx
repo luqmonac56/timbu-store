@@ -114,7 +114,7 @@ export default function Header() {
               <h4 className="font-semibold">₦22,000</h4>
             </div>
 
-            <div className="flex flex-col mt-4 lg:flex-row gap-4 lg:gap-4">
+            <div className="flex flex-col mt-8 lg:flex-row gap-4 lg:gap-4 absolute lg:relative lg:w-full w-[90%] bottom-4">
               <NavLink
                 className=" flex lg:w-[40%] w-full py-2 text-[#190D40] border-[#190D40] border-[1px] border-solid rounded-xl"
                 to="/cart"
