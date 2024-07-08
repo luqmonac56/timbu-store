@@ -6,7 +6,9 @@ import PlusMinusBtn from "./PlusMinusBtn";
 import person from "../assets/line-md_account.svg";
 import heart from "../assets/f7_heart.svg";
 import cart from "../assets/uil_cart.png";
+import logo from "../assets/logo.svg";
 import hamburger from "../assets/pajamas_hamburger.svg";
+import close from "../assets/close.png"
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,23 +30,15 @@ export default function Header() {
       </div>
       <nav className="flex bg-[#C6BDDE] justify-between items-center px-4 lg:px-20">
         <NavLink to="/">
-          <img src="../src/assets/logo.svg" alt="logo" />
+          <img src={logo} alt="logo" />
         </NavLink>
         <div className=" flex gap-2">
           <img className="w-5 h-5" src={person} alt="md_account" />
           <img className="w-5 h-5" src={heart} alt="heart" />
           <button onClick={handleOpenModal}>
-            <img
-              className="w-5 h-5"
-              src={cart}
-              alt="cart"
-            />
+            <img className="w-5 h-5" src={cart} alt="cart" />
           </button>
-          <img
-            className="w-5 h-5 lg:hidden"
-            src={hamburger}
-            alt="hamburger"
-          />
+          <img className="w-5 h-5 lg:hidden" src={hamburger} alt="hamburger" />
         </div>
       </nav>
       <header className="flex lg:h-[170px] lg:px-20">
@@ -106,7 +100,7 @@ export default function Header() {
                 <button>
                   <img
                     className="w-[20px] h-[20px]"
-                    src="../src/assets/close.png"
+                    src={close}
                     alt="close botton"
                   />
                 </button>
@@ -120,15 +114,15 @@ export default function Header() {
               <h4 className="font-semibold">₦22,000</h4>
             </div>
 
-            <div className="flex flex-col mt-4 lg:flex-row gap-2 lg:gap-4">
+            <div className="flex flex-col mt-4 lg:flex-row gap-4 lg:gap-4">
               <NavLink
-                className=" flex w-[40%] py-2 text-[#190D40] border-[#190D40] border-[1px] border-solid rounded-xl"
+                className=" flex lg:w-[40%] w-full py-2 text-[#190D40] border-[#190D40] border-[1px] border-solid rounded-xl"
                 to="/cart"
               >
                 <button className="m-auto">View Cart</button>
               </NavLink>
               <NavLink
-                className="flex w-[60%] py-2 bg-[#190D40] text-white rounded-xl"
+                className="flex lg:w-[60%] w-full py-2 bg-[#190D40] text-white rounded-xl"
                 to="/checkout"
               >
                 <button className="m-auto">Checkout</button>
