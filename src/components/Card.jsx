@@ -1,6 +1,7 @@
 import React from "react";
 import PlusMinusBtn from "./PlusMinusBtn";
 import { NavLink } from "react-router-dom";
+import heart from "../assets/f7_heart.svg";
 
 export default function Card({ item, index }) {
   return (
@@ -8,7 +9,7 @@ export default function Card({ item, index }) {
       <div key={index} className="card py-4 px-3">
         <div className="w-full">
           <img
-            src="../src/assets/f7_heart.svg"
+            src={heart}
             className="w-5 h-5 float-right -mb-6"
             alt=""
           />
