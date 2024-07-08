@@ -18,14 +18,14 @@ export default function Card({ item, index }) {
           src={item.image}
           alt={item.title}
         />
-        <div className="flex items-start text-xs">
-          <p className=" ">{item.description}</p>
+        <div className="flex justify-between items-start text-xs">
+          <p className=" w-[70%]">{item.description}</p>
           <p className="font-bold">{item.price}</p>
         </div>
         <div className="flex justify-between items-center">
           <PlusMinusBtn />
           <NavLink to="/cart">
-            <button className="py-2 px-2 lg:px-4 text-white rounded-xl bg-[#190D40]">
+            <button className="py-2 px-2 lg:px-4 text-white text-xs rounded-xl bg-[#190D40]">
               Add to cart
             </button>
           </NavLink>

@@ -1,9 +1,12 @@
 import { React, useState } from "react";
-
 import { NavLink } from "react-router-dom";
 import Modal from "./Modal";
 import CartItem from "./CartItem";
 import PlusMinusBtn from "./PlusMinusBtn";
+import person from "../assets/line-md_account.svg";
+import heart from "../assets/f7_heart.svg";
+import cart from "../assets/uil_cart.png";
+import hamburger from "../assets/pajamas_hamburger.svg";
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,27 +31,19 @@ export default function Header() {
           <img src="../src/assets/logo.svg" alt="logo" />
         </NavLink>
         <div className=" flex gap-2">
-          <img
-            className="w-5 h-5"
-            src="../src/assets/line-md_account.svg"
-            alt="person"
-          />
-          <img
-            className="w-5 h-5"
-            src="../src/assets/f7_heart.svg"
-            alt="person"
-          />
+          <img className="w-5 h-5" src={person} alt="md_account" />
+          <img className="w-5 h-5" src={heart} alt="heart" />
           <button onClick={handleOpenModal}>
             <img
               className="w-5 h-5"
-              src="../src/assets/uil_cart.png"
-              alt="person"
+              src={cart}
+              alt="cart"
             />
           </button>
           <img
-            className="w-5 h-5"
-            src="../src/assets/pajamas_hamburger.svg"
-            alt="person"
+            className="w-5 h-5 lg:hidden"
+            src={hamburger}
+            alt="hamburger"
           />
         </div>
       </nav>

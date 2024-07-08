@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#C9C1DD] px-4 lg:px-20 py-6 flex lg:flex-row flex-col justify-between mt-8">
+    <footer className="bg-[#C9C1DD] px-4 lg:px-20 py-6 flex lg:flex-row flex-col justify-between mt-14">
       <div>
         <img src="../src/assets/logo.svg" alt="logo" />
         <p className="hidden lg:block">

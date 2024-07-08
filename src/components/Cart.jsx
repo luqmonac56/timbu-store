@@ -6,7 +6,7 @@ export default function Cart({ data }) {
   const likelyItems = data.slice(0, 4);
   
   return (
-    <section className="px-6 py-4 lg:px-10">
+    <section className="px-6 py-4 mt-[2rem] lg:px-10">
       <div className="flex flex-col gap-8 lg:flex-row  justify-between">
         <div className="cart-items lg:w-[50%]">
           <CartItem/>
