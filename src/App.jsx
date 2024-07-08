@@ -5,11 +5,12 @@ import Header from "./components/Header";
 import Homepage from "./components/Homepage";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
+import cream from "../src/assets/cream.png";
 
 function App() {
   const data = [
     {
-      image: "../src/assets/cream.png",
+      image: cream,
       price: "₦12,000",
       description: "Touch bright & Clear Cream | 150ml",
     },

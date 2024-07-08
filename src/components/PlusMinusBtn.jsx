@@ -3,7 +3,7 @@ import React from "react";
 export default function PlusMinusBtn() {
   return (
     <div>
-      <p className="flex gap-2">
+      <p className="flex gap-2 px-2 mb-1">
         <button>-</button>
         <span>1</span>
         <button>+</button>

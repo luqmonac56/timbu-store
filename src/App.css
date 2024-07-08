@@ -15,6 +15,9 @@ header {
   font-weight: 600;
   font-style: normal;
 }
+p {
+  line-height: 24px;
+}
 
 .filter-btn {
   border: 1px solid #190d40;
@@ -66,3 +69,37 @@ footer form input {
   flex-wrap: nowrap;
   overflow-x: auto;
 }
+
+.checkout-form input {
+  width: 100%;
+  outline: none;
+  border: 1px solid #190d40;
+  background: transparent;
+  border-radius: 8px;
+  padding: 0.8rem;
+}
+
+.checkout-form .mainFormDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 12px;
+}
+

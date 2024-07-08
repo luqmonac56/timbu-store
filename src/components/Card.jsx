@@ -1,5 +1,6 @@
 import React from "react";
 import PlusMinusBtn from "./PlusMinusBtn";
+import { NavLink } from "react-router-dom";
 
 export default function Card({ item, index }) {
   return (
@@ -23,9 +24,11 @@ export default function Card({ item, index }) {
         </div>
         <div className="flex justify-between items-center">
           <PlusMinusBtn />
-          <button className="py-2 px-2 lg:px-4 text-white rounded-xl bg-[#190D40]">
-            Add to cart
-          </button>
+          <NavLink to="/cart">
+            <button className="py-2 px-2 lg:px-4 text-white rounded-xl bg-[#190D40]">
+              Add to cart
+            </button>
+          </NavLink>
         </div>
       </div>
     </>
