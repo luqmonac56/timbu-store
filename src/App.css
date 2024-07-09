@@ -74,7 +74,7 @@ footer form input {
 .checkout-form input {
   width: 100%;
   outline: none;
-  border: 0.5px solid #C6BDDE;
+  border: 0.5px solid #c6bdde;
   background: transparent;
   border-radius: 8px;
   padding: 0.8rem;
@@ -104,3 +104,18 @@ footer form input {
   border-radius: 12px;
 }
 
+a {
+  scale: 1;
+  transition: scale 0.5s ease-in-out;
+}
+button {
+  scale: 1;
+  transition: scale 0.5s ease-in-out;
+}
+a:hover {
+  scale: 0.9;
+}
+
+button:hover {
+  scale: 0.9;
+}

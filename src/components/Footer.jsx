@@ -3,7 +3,7 @@ import logo from "../assets/logo.svg";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#C9C1DD] px-4 lg:px-20 py-6 flex lg:flex-row flex-col justify-between mt-14">
+    <footer className="bg-[#C9C1DD]  px-4 lg:px-20 py-6 flex lg:flex-row flex-col justify-between mt-14">
       <div>
         <img src={logo} alt="logo" />
         <p className="hidden lg:block">

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Checkout() {
   return (
-    <section className="px-4 lg:px-8 mt-4">
+    <section className="px-4 max-w-[1280px] my-4 mx-auto lg:px-8">
       <div>
         <h2 className="text-base font-medium lg:text-2xl">Billing Details</h2>
         <p>

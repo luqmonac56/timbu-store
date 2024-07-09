@@ -28,7 +28,7 @@ export default function Header() {
           Free shipping on orders over ₦60,000 | 30-day money-back guarantee
         </p>
       </div>
-      <nav className="flex lg:bg-white bg-[#C6BDDE] justify-between items-center px-4 lg:px-20 lg:py-4">
+      <nav className="flex lg:bg-white max-w-[1280px] my-0 mx-auto bg-[#C6BDDE] justify-between items-center px-4  lg:py-2">
         <div className="hidden lg:flex border-[#C8C0DE] rounded-xl px-4 py-2 border-[0.5px] border-solid  gap-3">
           <label htmlFor="search">
             <img src={search} alt="Search icon" />
