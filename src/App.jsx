@@ -85,7 +85,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header data={data} />
         <section>
           <Routes>
             <Route index element={<Homepage data={data} />} />

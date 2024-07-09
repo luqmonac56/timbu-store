@@ -5,6 +5,7 @@ body {
   font-weight: 400;
   scroll-behavior: smooth;
   font-style: normal;
+  color: #121212;
 }
 header {
   background: url(./assets/header-image.jpeg);
@@ -105,11 +106,9 @@ footer form input {
 }
 
 a {
-  scale: 1;
   transition: scale 0.5s ease-in-out;
 }
 button {
-  scale: 1;
   transition: scale 0.5s ease-in-out;
 }
 a:hover {
@@ -118,4 +117,10 @@ a:hover {
 
 button:hover {
   scale: 0.9;
+}
+
+
+.heart{
+  fill: #000;
+
 }

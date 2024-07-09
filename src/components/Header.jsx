@@ -9,9 +9,15 @@ import cart from "../assets/uil_cart.png";
 import logo from "../assets/logo.svg";
 import search from "../assets/search-solid.png";
 import close from "../assets/close.png";
+import { useLocation } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ data }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const location = useLocation();
+  const text = location.pathname === "/cart" ? "cart" : "Services";
+
+  const cartItems = data.slice(0, 2);
+  console.log(cartItems);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -47,76 +53,52 @@ export default function Header() {
           <button onClick={handleOpenModal}>
             <img className="w-5 h-5" src={cart} alt="cart" />
           </button>
-          <img className="w-5 h-5" src={person} alt="md_account" />
+          <NavLink to="/">
+            <img className="w-5 h-5" src={person} alt="md_account" />
+          </NavLink>
         </div>
       </nav>
       <header className="flex lg:h-[170px] lg:px-20">
         <h1 className="text-center m-auto lg:text-2xl">
-          Shop all our Products
+          {location.pathname === "/" ? "Shop all our Products" : " "}
+          {location.pathname === "/cart" ? "Cart (2)" : " "}
+          {location.pathname === "/checkout" ? "Checkout" : " "}
+          {location.pathname === "/thankyou" ? "Thank You" : " "}
         </h1>
       </header>
 
       <div>
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           <>
-            <div className="item mt-4 pr-10">
-              <div className="flex items-start gap-4 py-4">
-                <div className="flex gap-4  justify-between">
-                  <img
-                    className="w-[90px] h-[90px]"
-                    src="../src/assets/cream.png"
-                    alt="item img"
-                  />
-                  <div className="flex flex-col justify-between">
-                    <p className="w-[90%]">
-                      Touch bright & Clear Cream | 150ml
-                    </p>
-                    <div className="flex flex-row justify-between mt-4 lg:mt-2 items-center">
-                      <span className="font-semibold">₦12,000</span>
-                      <PlusMinusBtn />
+            {cartItems.map((item, index) => (
+              <div key={index} className="item mt-4 pr-10">
+                <div className="flex items-start gap-4 py-4">
+                  <div className="flex gap-4  justify-between">
+                    <img
+                      className="w-[90px] h-[90px]"
+                      src={item.image}
+                      alt="item img"
+                    />
+                    <div className="flex flex-col justify-between">
+                      <p className="w-[90%]">{item.description}</p>
+                      <div className="flex flex-row justify-between mt-4 lg:mt-2 items-center">
+                        <span className="font-semibold">₦12,000</span>
+                        <PlusMinusBtn />
+                      </div>
                     </div>
                   </div>
+                  <button>
+                    <img
+                      className="w-[20px] h-[20px]"
+                      src="../src/assets/close.png"
+                      alt="close botton"
+                    />
+                  </button>
                 </div>
-                <button>
-                  <img
-                    className="w-[20px] h-[20px]"
-                    src="../src/assets/close.png"
-                    alt="close botton"
-                  />
-                </button>
-              </div>
 
-              <div className="h-[0.2px] w-full bg-[#C6BDDE]"></div>
-            </div>
-            <div className="item mt-4 pr-10">
-              <div className="flex items-start gap-4 py-4">
-                <div className="flex gap-4  justify-between">
-                  <img
-                    className="w-[90px] h-[90px]"
-                    src="../src/assets/cream.png"
-                    alt="item img"
-                  />
-                  <div className="flex flex-col justify-between">
-                    <p className="w-[90%]">
-                      Touch bright & Clear Cream | 150ml
-                    </p>
-                    <div className="flex flex-row justify-between mt-4 lg:mt-2 items-center">
-                      <span className="font-semibold">₦12,000</span>
-                      <PlusMinusBtn />
-                    </div>
-                  </div>
-                </div>
-                <button>
-                  <img
-                    className="w-[20px] h-[20px]"
-                    src={close}
-                    alt="close botton"
-                  />
-                </button>
+                <div className="h-[0.2px] w-full bg-[#C6BDDE]"></div>
               </div>
-
-              <div className="h-[0.5px] w-full bg-[#C6BDDE]"></div>
-            </div>
+            ))}
 
             <div className="flex mt-4 px-4 justify-between items-center">
               <span>Subtotal</span>
