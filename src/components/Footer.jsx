@@ -15,7 +15,7 @@ export default function Footer() {
         through high-quality products, and a deep understanding of your skincare
         needs.
       </p>
-      <p className="text-left mt-[3rem]">2024 Timbu.co. All Right Reserved</p>
+      <p className="text-left text-[8px] mt-[3rem]">2024 Timbu.co. All Right Reserved</p>
     </footer>
   );
 }

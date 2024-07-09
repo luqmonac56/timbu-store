@@ -35,13 +35,13 @@ export default function Header({ data }) {
         </p>
       </div>
       <nav className="flex lg:bg-white max-w-[1280px] my-0 mx-auto bg-[#C6BDDE] justify-between items-center px-4  lg:py-2">
-        <div className="hidden lg:flex border-[#C8C0DE] rounded-xl px-4 py-2 border-[0.5px] border-solid  gap-3">
+        <div className="hidden lg:flex border-[#C8C0DE] rounded-3xl px-4 py-2 border-[0.5px] border-solid  gap-3">
           <label htmlFor="search">
             <img src={search} alt="Search icon" />
           </label>
           <input
             id="search"
-            className="bg-transparent outline-none"
+            className="bg-transparent outline-none "
             type="search"
             placeholder="Search "
           />
