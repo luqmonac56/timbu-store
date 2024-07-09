@@ -12,7 +12,7 @@ export default function Card({ item, index, openModal }) {
   };
   return (
     <>
-      <div key={index} className="card py-4 px-3">
+      <div  className="card py-4 px-3">
         <div className="w-full">
           <button onClick={handleClicked} className="w-5 h-5 float-right -mb-6">
             {!isClicked && <img className="heart" src={heart} alt="heart" />}

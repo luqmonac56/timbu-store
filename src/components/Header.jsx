@@ -13,15 +13,16 @@ import { useLocation } from "react-router-dom";
 
 
 export default function Header({
-  data,
+  // data,
   handleOpenModal,
   handleCloseModal,
   isModalOpen,
   handleRemove,
+  cartItems,
 }) {
   const location = useLocation();
 
-  const cartItems = data.slice(0, 2);
+  // const cartItems = data.slice(0, 2);
 
   return (
     <>
