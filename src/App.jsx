@@ -122,33 +122,6 @@ function App() {
     },
   ]);
 
-  // const likelyItems = [
-  //   {
-  //     id: 1,
-  //     image: cream,
-  //     price: "₦12,000",
-  //     description: "Touch bright & Clear Cream | 150ml",
-  //   },
-  //   {
-  //     id: 2,
-  //     image: vitaminC,
-  //     price: "₦10,000",
-  //     description: "Cosrx The Vitamin C 13 Serum | 60ml",
-  //   },
-  //   {
-  //     id: 3,
-  //     image: serum,
-  //     price: "₦15,000",
-  //     description: "G. Niacinamide Brightening Toner | 120ml",
-  //   },
-  //   {
-  //     id: 4,
-  //     image: cera,
-  //     price: "₦12,000",
-  //     description: "Cerave Foaming Cleanser | 473ml",
-  //   },
-  // ];
-
   const handleRemove = (id) => {
     const filteredData = cartItems.filter((item) => item.id !== id);
     setCartItems(filteredData);
