@@ -90,7 +90,7 @@ export default function Header({ data }) {
                   <button>
                     <img
                       className="w-[20px] h-[20px]"
-                      src="../src/assets/close.png"
+                      src={close}
                       alt="close botton"
                     />
                   </button>
@@ -107,12 +107,14 @@ export default function Header({ data }) {
 
             <div className="flex flex-col mt-8 lg:flex-row gap-4 lg:gap-4 absolute lg:relative lg:w-full w-[90%] bottom-4">
               <NavLink
+                onClick={handleCloseModal}
                 className=" flex lg:w-[40%] w-full py-2 text-[#190D40] border-[#190D40] border-[1px] border-solid rounded-xl"
                 to="/cart"
               >
                 <button className="m-auto">View Cart</button>
               </NavLink>
               <NavLink
+                onClick={handleCloseModal}
                 className="flex lg:w-[60%] w-full py-2 bg-[#190D40] text-white rounded-xl"
                 to="/checkout"
               >
