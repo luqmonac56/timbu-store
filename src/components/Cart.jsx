@@ -34,7 +34,7 @@ export default function Cart({ data }) {
         </div>
       </div>
       <div className=" my-8 h-[0.5px] w-full bg-[#C6BDDE]"></div>
-      <h4 className="mb-4 font-semibold text-xl lg:text-2xl">
+      <h4 className="mb-8 lg:mb-[3rem] font-semibold text-xl lg:text-2xl">
         You may also Like
       </h4>
       <div className="card-section gap-4 ">
