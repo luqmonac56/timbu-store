@@ -1,4 +1,7 @@
 import React from "react";
+import vitaminC from "../assets/Vitamin-C-13-Serum.png";
+import cream from "../assets/cream.png";
+import { NavLink } from "react-router-dom";
 
 export default function Checkout() {
   return (
@@ -55,23 +58,23 @@ export default function Checkout() {
               <div className="item flex gap-4 items-center p-2 bg-white rounded-xl w-[80%] lg:w-[90%] mx-auto my-0">
                 <img
                   className="w-[73px] h-[73px]"
-                  src="../src/assets/cream.png"
+                  src={cream}
                   alt="cream img"
                 />
                 <div className="flex flex-col gap-1 px-2">
                   <p>Touch bright & Clear Cream | 150ml</p>
-                  <span className="font-semibold">₦10,000</span>
+                  <span className="font-semibold">₦12,000</span>
                   <span>Qty: 1</span>
                 </div>
               </div>
               <div className="item flex gap-4 items-center p-2 bg-white rounded-xl w-[80%] lg:w-[90%] mx-auto my-0">
                 <img
                   className="w-[73px] h-[73px]"
-                  src="../src/assets/cream.png"
-                  alt="cream img"
+                  src={vitaminC}
+                  alt="item img"
                 />
                 <div className="flex flex-col gap-1 px-2">
-                  <p>Touch bright & Clear Cream | 150ml</p>
+                  <p>Cosrx The Vitamin C 13 Serum | 60ml</p>
                   <span className="font-semibold">₦10,000</span>
                   <span>Qty: 1</span>
                 </div>
@@ -100,9 +103,12 @@ export default function Checkout() {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <button className="btn-blue mt-8  w-[80%] lg:w-[60%] m-auto">
-              Pay Now
-            </button>
+            <NavLink
+              className="flex btn-blue mt-8 w-[80%] lg:w-[60%] m-auto"
+              to="/thankyou"
+            >
+              <button className="m-auto ">Pay Now</button>
+            </NavLink>
             <p>
               We accept every and any type of payment; Bank transfer,
               Debit/Credit cards, USSD

@@ -17,6 +17,7 @@ import powderBrush from "../src/assets/powder-brush.png";
 import serum2 from "../src/assets/serum2.png";
 import clinque from "../src/assets/clinque.png";
 import lipgloss from "../src/assets/lipgloss.png";
+import ThankYou from "./components/ThankYou";
 
 function App() {
   const data = [
@@ -90,6 +91,7 @@ function App() {
             <Route index element={<Homepage data={data} />} />
             <Route path="cart" element={<Cart data={data} />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="/thankyou" element={<ThankYou/>} />
           </Routes>
         </section>
         <Footer />

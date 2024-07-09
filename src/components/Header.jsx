@@ -7,8 +7,8 @@ import person from "../assets/line-md_account.svg";
 import heart from "../assets/f7_heart.svg";
 import cart from "../assets/uil_cart.png";
 import logo from "../assets/logo.svg";
-import hamburger from "../assets/pajamas_hamburger.svg";
-import close from "../assets/close.png"
+import search from "../assets/search-solid.png";
+import close from "../assets/close.png";
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,17 +28,26 @@ export default function Header() {
           Free shipping on orders over ₦60,000 | 30-day money-back guarantee
         </p>
       </div>
-      <nav className="flex bg-[#C6BDDE] justify-between items-center px-4 lg:px-20">
+      <nav className="flex lg:bg-white bg-[#C6BDDE] justify-between items-center px-4 lg:px-20 lg:py-4">
+        <div className="hidden lg:flex border-[#C8C0DE] rounded-xl px-4 py-2 border-[0.5px] border-solid  gap-3">
+          <label htmlFor="search">
+            <img src={search} alt="Search icon" />
+          </label>
+          <input
+            id="search"
+            className="bg-transparent outline-none"
+            type="search"
+            placeholder="Search "
+          />
+        </div>
         <NavLink to="/">
           <img src={logo} alt="logo" />
         </NavLink>
         <div className=" flex gap-2">
-          <img className="w-5 h-5" src={person} alt="md_account" />
-          <img className="w-5 h-5" src={heart} alt="heart" />
           <button onClick={handleOpenModal}>
             <img className="w-5 h-5" src={cart} alt="cart" />
           </button>
-          <img className="w-5 h-5 lg:hidden" src={hamburger} alt="hamburger" />
+          <img className="w-5 h-5" src={person} alt="md_account" />
         </div>
       </nav>
       <header className="flex lg:h-[170px] lg:px-20">
