@@ -8,7 +8,7 @@ export default function Footer() {
       <NavLink>
         <img className="w-[55px]" src={logo} alt="logo" />
       </NavLink>
-      <p className="text-xs w-[80%]  lg:w-[40%] my-0 mx-auto">
+      <p className="text-xs w-[80%]  lg:w-[40%]">
         At Timbu, we bring together the finest skincare products from trusted
         brands to offer you personalized regimens that celebrate your unique
         skin. Our commitment is to help you achieve radiant, healthy skin

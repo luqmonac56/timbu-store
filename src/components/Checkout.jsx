@@ -14,7 +14,7 @@ export default function Checkout() {
         </p>
       </div>
       <div className="flex flex-col lg:flex-row justify-between  gap-8">
-        <form className="checkout-form mt-6 flex-1 flex text-[#191919] flex-col gap-3 max-w-[650px]">
+        <form className="checkout-form mt-6 flex-1 flex text-[#191919] flex-col gap-3 max-w-[550px]">
           <div className="mainFormDiv">
             <label htmlFor="email">Email Address</label>
             <input id="email" type="email" placeholder="Email Address" />
@@ -48,7 +48,7 @@ export default function Checkout() {
             <input id="phone" type="email" placeholder="Phone Number" />
           </div>
         </form>
-        <div className="flex-1 w-full max-w-[550px]">
+        <div className="flex-1 w-full max-w-[500px]">
           <div className="bg-[#C6BDDE] rounded-xl py-6 mt-8 ">
             <div className="text-center">
               <h2 className="font-semibold ">Your Order</h2>
