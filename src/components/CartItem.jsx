@@ -2,12 +2,11 @@ import React from "react";
 import PlusMinusBtn from "./PlusMinusBtn";
 import close from "../assets/close.png";
 
-export default function CartItem({ data }) {
-  const cartItems = data.slice(0, 2);
+export default function CartItem({ cartItems, handleRemove }) {
   return (
     <>
       {cartItems.map((item, index) => (
-        <div className="item mb-4">
+        <div key={index} className="item mb-4">
           <div className="flex gap-4 items-start justify-between py-4">
             <img
               className="w-[90px] h-[90px]"
@@ -21,7 +20,7 @@ export default function CartItem({ data }) {
                 <PlusMinusBtn />
               </div>
             </div>
-            <button>
+            <button onClick={() => handleRemove(item.id)}>
               <img
                 className="w-[20px] h-[20px]"
                 src={close}

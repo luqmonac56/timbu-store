@@ -3,14 +3,12 @@ import Card from "./Card";
 import CartItem from "./CartItem";
 import { NavLink } from "react-router-dom";
 
-export default function Cart({ data }) {
-  const likelyItems = data.slice(0, 4);
-
+export default function Cart({ handleRemove, likelyItems, cartItems }) {
   return (
     <section className="max-w-[1280px] my-0 mx-auto px-6 py-4 mt-[2rem] lg:px-10">
       <div className="flex flex-col w-full my-0 mx-auto gap-8 lg:flex-row items-start  justify-between">
         <div className="cart-items lg:w-[50%] my-0 mx-auto">
-          <CartItem data={data} />
+          <CartItem handleRemove={handleRemove} cartItems={cartItems} />
         </div>
 
         <div className="bg-[#C6BDDE] my-0 mx-auto pt-6 pb-4 lg:mt-6 rounded-xl flex flex-col gap-4 min-w-80">

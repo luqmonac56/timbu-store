@@ -11,21 +11,17 @@ import search from "../assets/search-solid.png";
 import close from "../assets/close.png";
 import { useLocation } from "react-router-dom";
 
-export default function Header({ data }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
+export default function Header({
+  data,
+  handleOpenModal,
+  handleCloseModal,
+  isModalOpen,
+  handleRemove,
+}) {
   const location = useLocation();
-  const text = location.pathname === "/cart" ? "cart" : "Services";
 
   const cartItems = data.slice(0, 2);
-  console.log(cartItems);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <>
@@ -49,8 +45,11 @@ export default function Header({ data }) {
         <NavLink to="/">
           <img src={logo} alt="logo" />
         </NavLink>
-        <div className=" flex gap-2">
-          <button onClick={handleOpenModal}>
+        <div className=" flex gap-2 lg:gap-4">
+          <button className="flex items-center" onClick={handleOpenModal}>
+            <span className="text-[8px] py-[1.5px] rounded-full text-white w-[15px] h-[15px] bg-[#190D40]">
+              2
+            </span>
             <img className="w-5 h-5" src={cart} alt="cart" />
           </button>
           <NavLink to="/">
@@ -87,7 +86,7 @@ export default function Header({ data }) {
                       </div>
                     </div>
                   </div>
-                  <button>
+                  <button onClick={() => handleRemove(item.id)}>
                     <img
                       className="w-[20px] h-[20px]"
                       src={close}
@@ -105,7 +104,7 @@ export default function Header({ data }) {
               <h4 className="font-semibold">₦22,000</h4>
             </div>
 
-            <div className="flex flex-col mt-8 lg:flex-row gap-4 lg:gap-4 absolute lg:relative lg:w-full w-[90%] bottom-4">
+            <div className="flex flex-col mt-8 lg:flex-row gap-4 lg:gap-4 absolute lg:relative lg:w-full w-[90%] bottom-[15%] ">
               <NavLink
                 onClick={handleCloseModal}
                 className=" flex lg:w-[40%] w-full py-2 text-[#190D40] border-[#190D40] border-[1px] border-solid rounded-xl"
@@ -127,4 +126,3 @@ export default function Header({ data }) {
     </>
   );
 }
-
