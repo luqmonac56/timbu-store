@@ -122,9 +122,17 @@ function App() {
     },
   ]);
 
+  const cartNumber = cartItems.length;
+
+
+
   const handleRemove = (id) => {
     const filteredData = cartItems.filter((item) => item.id !== id);
     setCartItems(filteredData);
+  };
+
+  const addToCart = (data) => {
+    setCartItems([...cartItems, data]);
   };
 
   return (
@@ -132,6 +140,7 @@ function App() {
       <BrowserRouter>
         <Header
           cartItems={cartItems}
+          cartNumber={cartNumber}
           handleCloseModal={handleCloseModal}
           handleOpenModal={handleOpenModal}
           handleRemove={handleRemove}
@@ -141,7 +150,13 @@ function App() {
           <Routes>
             <Route
               index
-              element={<Homepage openModal={handleOpenModal} data={data} />}
+              element={
+                <Homepage
+                  addToCart={addToCart}
+                  openModal={handleOpenModal}
+                  data={data}
+                />
+              }
             />
             <Route
               path="cart"
@@ -153,7 +168,10 @@ function App() {
                 />
               }
             />
-            <Route path="checkout" element={<Checkout />} />
+            <Route
+              path="checkout"
+              element={<Checkout cartItems={cartItems} />}
+            />
             <Route path="/thankyou" element={<ThankYou />} />
           </Routes>
         </section>

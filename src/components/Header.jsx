@@ -13,7 +13,7 @@ import { useLocation } from "react-router-dom";
 
 
 export default function Header({
-  // data,
+  cartNumber,
   handleOpenModal,
   handleCloseModal,
   isModalOpen,
@@ -49,7 +49,7 @@ export default function Header({
         <div className=" flex gap-2 lg:gap-4">
           <button className="flex items-center" onClick={handleOpenModal}>
             <span className="text-[8px] py-[1.5px] rounded-full text-white w-[15px] h-[15px] bg-[#190D40]">
-              2
+              {cartNumber}
             </span>
             <img className="w-5 h-5" src={cart} alt="cart" />
           </button>
@@ -82,7 +82,7 @@ export default function Header({
                     <div className="flex flex-col justify-between">
                       <p className="w-[90%]">{item.description}</p>
                       <div className="flex flex-row justify-between mt-4 lg:mt-2 items-center">
-                        <span className="font-semibold">₦12,000</span>
+                        <span className="font-semibold">{item.price}</span>
                         <PlusMinusBtn />
                       </div>
                     </div>
@@ -105,7 +105,7 @@ export default function Header({
               <h4 className="font-semibold">₦22,000</h4>
             </div>
 
-            <div className="flex flex-col mt-8 lg:flex-row gap-4 lg:gap-4 absolute lg:relative lg:w-full w-[90%] bottom-[15%] ">
+            <div className="flex flex-col mt-8 lg:flex-row gap-4 lg:gap-4 lg:w-full mx-auto w-[90%] absolute bottom-4 lg:relative">
               <NavLink
                 onClick={handleCloseModal}
                 className=" flex lg:w-[40%] w-full py-2 text-[#190D40] border-[#190D40] border-[1px] border-solid rounded-xl"

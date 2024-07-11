@@ -29,8 +29,6 @@ p {
 
 .card {
   border: 1px solid #c6bdde;
-  /* width: 47%; */
-  /* max-width: 260px; */
   height: auto;
   border-radius: 12px;
   display: flex;
@@ -94,15 +92,32 @@ footer form input {
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: end;
+  /* align-items: ; */
 }
 
 .modal-content {
   background-color: #fefefe;
+  position: relative;
   padding: 20px;
   border-radius: 12px;
+  /* max-height: 90%; */
+  overflow-y: auto;
+  /* margin-right: 3rem;
+  margin-top: 2.5rem; */
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.modal-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 
 a {
   transition: scale 0.5s ease-in-out;
@@ -118,26 +133,6 @@ button:hover {
   scale: 0.9;
 }
 
-/* Tooltip */
-
-.tooltip {
-  position: relative;
-}
-
-.tooltip-text {
-  visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -60px;
-}
 
 @media (max-width: 374px) {
   .card {

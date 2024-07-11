@@ -4,16 +4,24 @@ import { NavLink } from "react-router-dom";
 import heart from "../assets/f7_heart.svg";
 import filledHeart from "../assets/filled-heart.png";
 
-export default function Card({ item, index, openModal,}) {
+export default function Card({ addToCart, item, index, openModal }) {
   const [isClicked, setIsclicked] = useState(false);
 
   const handleClicked = () => {
     setIsclicked(!isClicked);
   };
 
+  const doTwoThings = (item) => {
+    openModal();
+    addToCart(item);
+  };
+
   return (
     <>
-      <div className="card w-[170px] md:w-[200px] md lg:w-[260px] py-4 px-3">
+      <div
+        key={index}
+        className="card w-[170px] md:w-[200px] md lg:w-[260px] py-4 px-3"
+      >
         <div className="w-full">
           <button onClick={handleClicked} className="w-5 h-5 float-right -mb-6">
             {!isClicked && <img className="heart" src={heart} alt="heart" />}
@@ -38,7 +46,7 @@ export default function Card({ item, index, openModal,}) {
         <div className="flex justify-between items-center">
           <PlusMinusBtn />
           <button
-            onClick={openModal}
+            onClick={() => doTwoThings(item)}
             className="py-2 px-2 lg:px-4 text-white text-xs rounded-xl bg-[#190D40]"
           >
             Add to cart

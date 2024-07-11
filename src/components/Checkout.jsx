@@ -3,7 +3,7 @@ import vitaminC from "../assets/Vitamin-C-13-Serum.png";
 import cream from "../assets/cream.png";
 import { NavLink } from "react-router-dom";
 
-export default function Checkout() {
+export default function Checkout({ cartItems }) {
   return (
     <section className="px-4 max-w-[1280px] my-4 mx-auto lg:px-8">
       <div>
@@ -54,31 +54,25 @@ export default function Checkout() {
               <h2 className="font-semibold ">Your Order</h2>
               <div className="h-[0.2px] mt-2 w-full bg-[#191919]"></div>
             </div>
+
             <div className="checkout-items mt-8 flex flex-col gap-4">
-              <div className="item flex gap-4 items-center p-2 bg-white rounded-xl w-[80%] lg:w-[90%] mx-auto my-0">
-                <img
-                  className="w-[73px] h-[73px]"
-                  src={cream}
-                  alt="cream img"
-                />
-                <div className="flex flex-col gap-1 px-2">
-                  <p>Touch bright & Clear Cream | 150ml</p>
-                  <span className="font-semibold">₦12,000</span>
-                  <span>Qty: 1</span>
-                </div>
-              </div>
-              <div className="item flex gap-4 items-center p-2 bg-white rounded-xl w-[80%] lg:w-[90%] mx-auto my-0">
-                <img
-                  className="w-[73px] h-[73px]"
-                  src={vitaminC}
-                  alt="item img"
-                />
-                <div className="flex flex-col gap-1 px-2">
-                  <p>Cosrx The Vitamin C 13 Serum | 60ml</p>
-                  <span className="font-semibold">₦10,000</span>
-                  <span>Qty: 1</span>
-                </div>
-              </div>
+              {cartItems.map((item, index) => (
+                <>
+                  <div key={index} className="item flex gap-4 items-center p-2 bg-white rounded-xl w-[80%] lg:w-[90%] mx-auto my-0">
+                    <img
+                      className="w-[73px] h-[73px]"
+                      src={item.image}
+                      alt="cream img"
+                    />
+                    <div className="flex flex-col gap-1 px-2">
+                      <p>{item.description}</p>
+                      <span className="font-semibold">{item.price}</span>
+                      <span>Qty: 1</span>
+                    </div>
+                  </div>
+                </>
+              ))}
+
             </div>
             <div className="mt-4">
               <div className="flex mb-2 px-4 justify-between items-center">

@@ -6,7 +6,7 @@ export default function Modal({ isOpen, onClose, children }) {
 
   return (
     <div className="modal">
-      <div className="modal-content z-[1000] overflow-y-visible w-full lg:w-[513px]  absolute right-0 top-0 lg:top-12 lg:right-10  h-[100vh] lg:h-auto">
+      <div className="modal-content lg:mt-[2.5rem] lg:mr-[3rem] lg:m-h-[90%] w-full lg:w-[513px] h-[100vh] lg:h-auto ">
         <div className="flex justify-between mb-4">
           <div className="flex gap-4 items-center font-semibold">
             <h3 className="lg:text-2xl">Cart (2)</h3>
