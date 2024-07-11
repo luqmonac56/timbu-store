@@ -29,9 +29,8 @@ p {
 
 .card {
   border: 1px solid #c6bdde;
-  width: 47%;
-  min-width: 170px;
-  max-width: 260px;
+  /* width: 47%; */
+  /* max-width: 260px; */
   height: auto;
   border-radius: 12px;
   display: flex;
@@ -119,7 +118,6 @@ button:hover {
   scale: 0.9;
 }
 
-
 /* Tooltip */
 
 .tooltip {
@@ -141,3 +139,8 @@ button:hover {
   margin-left: -60px;
 }
 
+@media (max-width: 374px) {
+  .card {
+    min-width: 250px;
+  }
+}
