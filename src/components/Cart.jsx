@@ -9,6 +9,7 @@ export default function Cart({
   cartItems,
   handleDecreaseItem,
   handleIncreaseItem,
+  clearCart,
 }) {
   return (
     <section className="max-w-[1280px] my-0 mx-auto px-6 py-4 mt-[2rem] lg:px-10">
@@ -20,6 +21,16 @@ export default function Cart({
             handleRemove={handleRemove}
             cartItems={cartItems}
           />
+
+          {cartItems.length === 0 ? (
+            " "
+          ) : (
+            <div className="mt-8">
+              <button onClick={clearCart} className="btn-blue  px-4">
+                Clear Cart
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="bg-[#C6BDDE] my-0 mx-auto pt-6 pb-4 lg:mt-6 rounded-xl flex flex-col gap-4 min-w-80">

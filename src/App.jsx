@@ -168,6 +168,7 @@ function App() {
                   cartItems={cartItems}
                   handleRemove={handleRemove}
                   likelyItems={likelyItems}
+                  clearCart={clearCart}
                 />
               }
             />
