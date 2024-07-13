@@ -25,30 +25,6 @@ import axios from "axios";
 function App() {
   const [data, setData] = useState([
     // {
-    //   id: 1,
-    //   image: cream,
-    //   price: 12000,
-    //   description: "Touch bright & Clear Cream | 150ml",
-    // },
-    // {
-    //   id: 2,
-    //   image: vitaminC,
-    //   price: 10000,
-    //   description: "Cosrx The Vitamin C 13 Serum | 60ml",
-    // },
-    // {
-    //   id: 3,
-    //   image: serum,
-    //   price: 15000,
-    //   description: "G. Niacinamide Brightening Toner | 120ml",
-    // },
-    // {
-    //   id: 4,
-    //   image: cera,
-    //   price: 12000,
-    //   description: "Cerave Foaming Cleanser | 473ml",
-    // },
-    // {
     //   id: 5,
     //   image: laroche,
     //   price: 22000,
@@ -129,9 +105,7 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const likelyItems = data.slice(0, 4);
 
-  const [cartItems, setCartItems] = useState([
-    
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
   const cartNumber = cartItems.length;
 
@@ -165,30 +139,27 @@ function App() {
     );
   };
 
-
   const handleRemove = (id) => {
     const filteredData = cartItems.filter((item) => item.id !== id);
     setCartItems(filteredData);
   };
 
-  const addToCart = (data) => {
-    setCartItems([...cartItems, data]);
-  };
-
   // const addToCart = (data) => {
-  //   setCartItems((prevItems) => {
-  //     const itemInCart = prevItems.find((item) => item.id === data.id);
-  //     if (itemInCart) {
-  //       return prevItems.map((item) =>
-  //         item.id === data.id
-  //           ? { ...item, quantity: item.quantity + 1 }
-  //           : item
-  //       );
-  //     } else {
-  //       return [...prevItems, { ...data, quantity: 1 }];
-  //     }
-  //   });
+  //   setCartItems([...cartItems, data]);
   // };
+
+  const addToCart = (data) => {
+    setCartItems((prevItems) => {
+      const itemInCart = prevItems.find((item) => item.id === data.id);
+      if (itemInCart) {
+        return prevItems.map((item) =>
+          item.id === data.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        return [...prevItems, { ...data, quantity: 1 }];
+      }
+    });
+  };
 
   return (
     <>
