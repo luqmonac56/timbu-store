@@ -23,58 +23,55 @@ import Product from "./components/Product";
 import axios from "axios";
 
 function App() {
-  const [data, setData] = useState([
-    // {
-    //   id: 5,
-    //   image: laroche,
-    //   price: 22000,
-    //   description: "LRP Double Gel Moisturizer | 400mll",
-    // },
-    // {
-    //   id: 6,
-    //   image: coco,
-    //   price: 8000,
-    //   description: "Good Skin Club Emulsion Gel | 30ml",
-    // },
-    // {
-    //   id: 7,
-    //   image: tikat,
-    //   price: 15000,
-    //   description: "Tam Snail & Azulene Low pH leanser | 150ml",
-    // },
-    // {
-    //   id: 8,
-    //   image: balance,
-    //   price: 10000,
-    //   description: "Balance Vit.C Glow & Radiance Serum | 30ml",
-    // },
-    // {
-    //   id: 9,
-    //   image: powderBrush,
-    //   price: 10000,
-    //   description: "Charbarl Charcoal Mask | 150g",
-    // },
-    // {
-    //   id: 10,
-    //   image: serum2,
-    //   price: 12000,
-    //   description: "The Ordinary AHA & BHA Peeling Solution | 60ml",
-    // },
-    // {
-    //   id: 11,
-    //   image: clinque,
-    //   price: 25200,
-    //   description: "Clinique Wrinke Correcting Eye Serum | 50ml",
-    // },
-    // {
-    //   id: 12,
-    //   image: lipgloss,
-    //   price: 12000,
-    //   description: "Curology Foaming Cleanser | 273ml",
-    // },
-  ]);
-
-  const [products, setProducts] = useState([]);
+  const [data, setData] = useState([]);
+  // {
+  //   id: 5,
+  //   image: laroche,
+  //   price: 22000,
+  //   description: "LRP Double Gel Moisturizer | 400mll",
+  // },
+  // {
+  //   id: 6,
+  //   image: coco,
+  //   price: 8000,
+  //   description: "Good Skin Club Emulsion Gel | 30ml",
+  // },
+  // {
+  //   id: 7,
+  //   image: tikat,
+  //   price: 15000,
+  //   description: "Tam Snail & Azulene Low pH leanser | 150ml",
+  // },
+  // {
+  //   id: 8,
+  //   image: balance,
+  //   price: 10000,
+  //   description: "Balance Vit.C Glow & Radiance Serum | 30ml",
+  // },
+  // {
+  //   id: 9,
+  //   image: powderBrush,
+  //   price: 10000,
+  //   description: "Charbarl Charcoal Mask | 150g",
+  // },
+  // {
+  //   id: 10,
+  //   image: serum2,
+  //   price: 12000,
+  //   description: "The Ordinary AHA & BHA Peeling Solution | 60ml",
+  // },
+  // {
+  //   id: 11,
+  //   image: clinque,
+  //   price: 25200,
+  //   description: "Clinique Wrinke Correcting Eye Serum | 50ml",
+  // },
+  // {
+  //   id: 12,
+  //   image: lipgloss,
+  //   price: 12000,
+  //   description: "Curology Foaming Cleanser | 273ml",
+  // },
 
   useEffect(() => {
     const getData = async () => {
@@ -99,7 +96,7 @@ function App() {
     getData();
   }, []);
 
-  console.log(data);
+  // console.log(data[0].id);
 
   const [itemNumber, setItemNumber] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -207,7 +204,7 @@ function App() {
               path="checkout"
               element={<Checkout subTotal={subTotal} cartItems={cartItems} />}
             />
-            <Route path="/products/:id" element={<Product />} />
+            <Route path="/products/:id" element={<Product data={data} />} />
             <Route path="/thankyou" element={<ThankYou />} />
           </Routes>
         </section>
