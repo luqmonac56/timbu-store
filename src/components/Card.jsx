@@ -8,7 +8,6 @@ export default function Card({
   addToCart,
   item,
   openModal,
-  itemNumber,
   handleDecreaseItem,
   handleIncreaseItem,
 }) {
@@ -22,6 +21,8 @@ export default function Card({
     openModal();
     addToCart(item);
   };
+
+
 
   return (
     <>
@@ -38,13 +39,15 @@ export default function Card({
             )}
           </button>
         </div>
-        {item.photos.length && (
-          <img
-            className="w-[90px] h-[90px] m-auto"
-            src={`https://api.timbu.cloud/images/${item.photos[0].url}`}
-            alt={item.name}
-          />
-        )}
+        <NavLink to={`/products/${item.id}`}>
+          {item.photos.length && (
+            <img
+              className="w-[90px] h-[90px] m-auto"
+              src={`https://api.timbu.cloud/images/${item.photos[0].url}`}
+              alt={item.name}
+            />
+          )}
+        </NavLink>
         <div className="flex justify-between items-start text-xs">
           <p className=" w-[70%]">{item.name}</p>
           <p className="font-bold">{item.current_price[0].NGN[0]}</p>

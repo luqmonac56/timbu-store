@@ -3,7 +3,11 @@ import vitaminC from "../assets/Vitamin-C-13-Serum.png";
 import cream from "../assets/cream.png";
 import { NavLink } from "react-router-dom";
 
-export default function Checkout({ subTotal,cartItems }) {
+export default function Checkout({ subTotal, cartItems }) {
+  const shipping_fee = 300;
+  const transaction_fee = 300;
+
+  const total = subTotal + shipping_fee + transaction_fee;
   return (
     <section className="px-4 max-w-[1280px] my-4 mx-auto lg:px-8">
       <div>
@@ -22,30 +26,45 @@ export default function Checkout({ subTotal,cartItems }) {
           <div className="name flex flex-col lg:flex-row gap-3">
             <div className="lg:w-[50%]">
               <label htmlFor="first-name">First Name</label>
-              <input id="first-name" type="text" placeholder="First Name" />
+              <input
+                required
+                id="first-name"
+                type="text"
+                placeholder="First Name"
+              />
             </div>
             <div className="lg:w-[50%]">
               <label htmlFor="last-name">Last Name</label>
-              <input id="last-name" type="text" placeholder="Last Name" />
+              <input
+                required
+                id="last-name"
+                type="text"
+                placeholder="Last Name"
+              />
             </div>
           </div>
           <div className="mainFormDiv">
             <label htmlFor="Address">Address</label>
-            <input id="text" type="email" placeholder="Address" />
+            <input requred id="text" type="email" placeholder="Address" />
           </div>
           <div className="country-state flex flex-col w-full lg:flex-row gap-3 ">
             <div className="lg:w-[50%]">
               <label htmlFor="country">Country</label>
-              <input id="country" type="text" placeholder="Country" />
+              <input required id="country" type="text" placeholder="Country" />
             </div>
             <div className="lg:w-[50%]">
               <label htmlFor="state">State</label>
-              <input id="state" type="text" placeholder="State" />
+              <input required id="state" type="text" placeholder="State" />
             </div>
           </div>
           <div className="mainFormDiv">
             <label htmlFor="phone">Phone Number</label>
-            <input id="phone" type="email" placeholder="Phone Number" />
+            <input
+              required
+              id="phone"
+              type="email"
+              placeholder="Phone Number"
+            />
           </div>
         </form>
         <div className="flex-1 w-full max-w-[500px] my-0 mx-auto">
@@ -72,7 +91,7 @@ export default function Checkout({ subTotal,cartItems }) {
                       <span className="font-semibold">
                         ₦{item.current_price[0].NGN[0]}
                       </span>
-                      <span>Qty: { item.count}</span>
+                      <span>Qty: {item.count}</span>
                     </div>
                   </div>
                 </>
@@ -85,18 +104,18 @@ export default function Checkout({ subTotal,cartItems }) {
               </div>
               <div className="flex mb-2 px-4 justify-between items-center">
                 <span>Shipping fee</span>
-                <h4 className="font-semibold">₦4,000</h4>
+                <h4 className="font-semibold">₦{shipping_fee}</h4>
               </div>
               <div className="flex px-4 justify-between items-center">
                 <span>Transaction fee</span>
-                <h4 className="font-semibold">₦300</h4>
+                <h4 className="font-semibold">₦{transaction_fee}</h4>
               </div>
 
               <div className="h-[0.4px] mt-8 mb-6 w-full bg-[#191919]"></div>
 
               <div className=" flex font-semibold px-4 justify-between items-center">
                 <span>Total</span>
-                <h4 className="font-semibold">₦26,300</h4>
+                <h4 className="font-semibold">₦{total}</h4>
               </div>
             </div>
           </div>

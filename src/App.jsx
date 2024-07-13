@@ -5,79 +5,23 @@ import Header from "./components/Header";
 import Homepage from "./components/Homepage";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
-import cream from "../src/assets/cream.png";
-import vitaminC from "../src/assets/Vitamin-C-13-Serum.png";
-import serum from "../src/assets/serum.png";
-import cera from "../src/assets/WhatsApp-Image.png";
-import laroche from "../src/assets/La-Roche.png";
-import coco from "../src/assets/coco.png";
-import tikat from "../src/assets/tikat.png";
-import balance from "../src/assets/BALANCE_VITC_SERUM_BOTTLE.png";
-import powderBrush from "../src/assets/powder-brush.png";
-import serum2 from "../src/assets/serum2.png";
-import clinque from "../src/assets/clinque.png";
-import lipgloss from "../src/assets/lipgloss.png";
 import ThankYou from "./components/ThankYou";
 import { useState, useEffect } from "react";
 import Product from "./components/Product";
 import axios from "axios";
+import Loader from "./components/Loader";
 
 function App() {
   const [data, setData] = useState([]);
-  // {
-  //   id: 5,
-  //   image: laroche,
-  //   price: 22000,
-  //   description: "LRP Double Gel Moisturizer | 400mll",
-  // },
-  // {
-  //   id: 6,
-  //   image: coco,
-  //   price: 8000,
-  //   description: "Good Skin Club Emulsion Gel | 30ml",
-  // },
-  // {
-  //   id: 7,
-  //   image: tikat,
-  //   price: 15000,
-  //   description: "Tam Snail & Azulene Low pH leanser | 150ml",
-  // },
-  // {
-  //   id: 8,
-  //   image: balance,
-  //   price: 10000,
-  //   description: "Balance Vit.C Glow & Radiance Serum | 30ml",
-  // },
-  // {
-  //   id: 9,
-  //   image: powderBrush,
-  //   price: 10000,
-  //   description: "Charbarl Charcoal Mask | 150g",
-  // },
-  // {
-  //   id: 10,
-  //   image: serum2,
-  //   price: 12000,
-  //   description: "The Ordinary AHA & BHA Peeling Solution | 60ml",
-  // },
-  // {
-  //   id: 11,
-  //   image: clinque,
-  //   price: 25200,
-  //   description: "Clinique Wrinke Correcting Eye Serum | 50ml",
-  // },
-  // {
-  //   id: 12,
-  //   image: lipgloss,
-  //   price: 12000,
-  //   description: "Curology Foaming Cleanser | 273ml",
-  // },
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       try {
         const res = await axios.get(
-          `/api/products?organization_id=3f570a4f4cf14dc99651783723c214bf&reverse_sort=false&page=1&size=10&Appid=4CVO1BXR3OYKFD8&Apikey=${
+          `/api/products?organization_id=3f570a4f4cf14dc99651783723c214bf&reverse_sort=false&page=${page}&size=10&Appid=4CVO1BXR3OYKFD8&Apikey=${
             import.meta.env.VITE_APP_API_KEY
           }`,
           {
@@ -86,16 +30,20 @@ function App() {
             },
           }
         );
-        console.log(res);
         setData(res.data.items.map((arg) => ({ ...arg, count: 1 })));
+        setLoading(false);
       } catch (error) {
         console.log(error.message);
+        setError(error);
+        setLoading(false);
       }
     };
 
     getData();
-  }, []);
+  }, [page]);
 
+
+  console.log(error);
   // console.log(data[0].id);
 
   const [itemNumber, setItemNumber] = useState(1);
@@ -141,9 +89,23 @@ function App() {
     setCartItems(filteredData);
   };
 
-  // const addToCart = (data) => {
-  //   setCartItems([...cartItems, data]);
-  // };
+  const handleNextPage = () => {
+    if (page > 3) {
+      setPage(3);
+    } else {
+      setPage((prevCount) => prevCount + 1);
+    }
+    console.log(page);
+  };
+  const handlePrevPage = () => {
+    if (page < 1) {
+      setPage(1);
+    } else {
+      setPage((prevCount) => prevCount - 1);
+    }
+
+    console.log(page);
+  };
 
   const addToCart = (data) => {
     setCartItems((prevItems) => {
@@ -178,12 +140,16 @@ function App() {
               index
               element={
                 <Homepage
+                  loading={loading}
                   itemNumber={itemNumber}
                   handleDecreaseItem={handleDecreaseItem}
                   handleIncreaseItem={handleIncreaseItem}
                   addToCart={addToCart}
                   openModal={handleOpenModal}
                   data={data}
+                  handleNextPage={handleNextPage}
+                  handlePrevPage={handlePrevPage}
+                  error={error}
                 />
               }
             />
@@ -204,7 +170,10 @@ function App() {
               path="checkout"
               element={<Checkout subTotal={subTotal} cartItems={cartItems} />}
             />
-            <Route path="/products/:id" element={<Product data={data} />} />
+            <Route
+              path="/products/:id"
+              element={<Product addToCart={addToCart} />}
+            />
             <Route path="/thankyou" element={<ThankYou />} />
           </Routes>
         </section>

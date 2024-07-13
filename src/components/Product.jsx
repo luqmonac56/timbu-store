@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import cream from "../assets/cream.png";
 import PlusMinusBtn from "./PlusMinusBtn";
 import axios from "axios";
 
-const Product = (data, handleDecreaseItem, handleIncreaseItem) => {
+const Product = (addToCart, handleDecreaseItem, handleIncreaseItem) => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   useEffect(() => {
     const getProduct = async () => {
       try {
         const res = await axios.get(
-          `/api/products/${data.id}?organization_id=3f570a4f4cf14dc99651783723c214bf`,
-
+          `https://timbu-get-single-product.reavdev.workers.dev/${id}?organization_id=3f570a4f4cf14dc99651783723c214bf&Appid=4CVO1BXR3OYKFD8&Apikey=${
+            import.meta.env.VITE_APP_API_KEY
+          }`,
           {
             headers: {
               Accept: "application/json",
             },
           }
         );
-        console.log(res);
-        
+        setProduct(res.data);
       } catch (error) {
         console.log(error.message);
       }
@@ -29,21 +29,27 @@ const Product = (data, handleDecreaseItem, handleIncreaseItem) => {
     getProduct();
   }, []);
 
-  console.log(data);
-
   return (
-    <section className="max-w-[1000px] my-[3rem] mx-auto">
-      <h2 className="text-2xl font-semibold mb-8">Product Description</h2>
-      <div className="flex gap-10">
-        <div className="rounded-xl h-[204px] w-[202px] bg-[#F2F2F2]">
-          <img src={cream} alt="" />
+    <section className="lg:w-[1000px] px-4 my-[3rem] mx-auto">
+      <NavLink className="text-5xl font-black" to={"/"}>
+        &larr;
+      </NavLink>
+      <h2 className="text-2xl font-semibold my-8">Product Description</h2>
+      <div className="flex flex-col lg:items-stretch items-center lg:flex-row gap-10">
+        <div className=" flex rounded-xl h-[204px] w-[202px] bg-[#F2F2F2]">
+          {product.photos && (
+            <img
+              className="m-auto"
+              src={`https://api.timbu.cloud/images/${product.photos[0].url}`}
+              alt=""
+            />
+          )}
         </div>
         <div className="flex flex-col gap-8">
           <div>
-            {/* <h2>{product.name}</h2> */}
-            <div className="flex flex-col font-600 text-2xl gap-4">
-              <h2>Touch bright & Clear Cream | 150ml</h2>
-              <p>₦12,000</p>
+            <div className="flex flex-col font-semibold  mb-4 text-2xl gap-4">
+              <h2>{product.name}</h2>
+              <p>₦{product.current_price}</p>
             </div>
             <p>
               The Touch Bright & Clear Cream is a concentrated cream targeting
@@ -52,14 +58,27 @@ const Product = (data, handleDecreaseItem, handleIncreaseItem) => {
           </div>
           <div className="">
             {/* <PlusMinusBtn /> */}
-            <button className="btn-blue w-[30%] max-w-[180px]">Add to Cart</button>
+            <button
+              onClick={addToCart}
+              className="btn-blue w-[30%] max-w-[180px]"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
       <div className="flex gap-2 mt-12 ">
-        <img className="w-[88px] h-[88px]" src={cream} alt="" />
-        <img className="w-[88px] h-[88px]" src={cream} alt="" />
-        <img className="w-[88px] h-[88px]" src={cream} alt="" />
+        {product.photos &&
+          product.photos.map((image, index) => (
+            <div className="rounded-[4px] w-[88px] h-[88px] flex gap-4 bg-[#F2F2F2]">
+              <img
+                className=" m-auto w-full h-full"
+                key={index}
+                src={`https://api.timbu.cloud/images/${image.url}`}
+                alt=""
+              />
+            </div>
+          ))}
       </div>
     </section>
   );

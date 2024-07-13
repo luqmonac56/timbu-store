@@ -70,8 +70,21 @@ export default function Header({
       </header>
 
       <div>
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <Modal
+          cartNumber={cartNumber}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+        >
           <>
+            {cartItems.length === 0 ? (
+              <div className="text-center h-[75%] flex">
+                <p className="m-auto font-semibold text-xl">
+                  Your Cart is currently empty.
+                </p>
+              </div>
+            ) : (
+              ""
+            )}
             {cartItems.map((item, index) => (
               <div key={index} className="item mt-4 pr-10">
                 <div className="flex items-start gap-4 py-4">
