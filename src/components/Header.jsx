@@ -21,6 +21,7 @@ export default function Header({
   isModalOpen,
   handleRemove,
   cartItems,
+  clearCart,
 }) {
   const location = useLocation();
 
@@ -76,6 +77,11 @@ export default function Header({
           onClose={handleCloseModal}
         >
           <>
+            <div>
+              <button onClick={clearCart} className="btn-blue px-4">
+                Clear Cart
+              </button>
+            </div>
             {cartItems.length === 0 ? (
               <div className="text-center h-[75%] flex">
                 <p className="m-auto font-semibold text-xl">

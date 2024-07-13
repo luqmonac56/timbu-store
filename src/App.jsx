@@ -33,7 +33,7 @@ function App() {
         setData(res.data.items.map((arg) => ({ ...arg, count: 1 })));
         setLoading(false);
       } catch (error) {
-        console.log(error.message);
+        // console.log(error.message);
         setError(error);
         setLoading(false);
       }
@@ -43,7 +43,7 @@ function App() {
   }, [page]);
 
 
-  console.log(error);
+  // console.log(error);
   // console.log(data[0].id);
 
   const [itemNumber, setItemNumber] = useState(1);
@@ -120,6 +120,10 @@ function App() {
     });
   };
 
+  const clearCart = () => {
+    setCartItems([])
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -133,6 +137,7 @@ function App() {
           isModalOpen={isModalOpen}
           handleDecreaseItem={handleDecreaseItem}
           handleIncreaseItem={handleIncreaseItem}
+          clearCart={clearCart}
         />
         <section>
           <Routes>
