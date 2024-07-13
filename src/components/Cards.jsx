@@ -1,15 +1,24 @@
 import React from "react";
 import Card from "./Card";
 
-export default function Cards({ addToCart, data, openModal }) {
+export default function Cards({
+  addToCart,
+  data,
+  openModal,
+  itemNumber,
+  handleDecreaseItem,
+  handleIncreaseItem,
+}) {
   return (
     <>
       {data.map((item, index) => (
-        <Card
+        <Card key={index}
           openModal={openModal}
           addToCart={addToCart}
           item={item}
-          index={index}
+          itemNumber={itemNumber}
+          handleDecreaseItem={handleDecreaseItem}
+          handleIncreaseItem={handleIncreaseItem}
         />
       ))}
     </>

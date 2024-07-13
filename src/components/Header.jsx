@@ -11,8 +11,10 @@ import search from "../assets/search-solid.png";
 import close from "../assets/close.png";
 import { useLocation } from "react-router-dom";
 
-
 export default function Header({
+  subTotal,
+  handleDecreaseItem,
+  handleIncreaseItem,
   cartNumber,
   handleOpenModal,
   handleCloseModal,
@@ -76,14 +78,20 @@ export default function Header({
                   <div className="flex gap-4  justify-between">
                     <img
                       className="w-[90px] h-[90px]"
-                      src={item.image}
+                      src={`https://api.timbu.cloud/images/${item.photos[0].url}`}
                       alt="item img"
                     />
                     <div className="flex flex-col justify-between">
-                      <p className="w-[90%]">{item.description}</p>
+                      <p className="w-[90%]">{item.name}</p>
                       <div className="flex flex-row justify-between mt-4 lg:mt-2 items-center">
-                        <span className="font-semibold">{item.price}</span>
-                        <PlusMinusBtn />
+                        <span className="font-semibold">
+                          {item.current_price[0].NGN[0]}
+                        </span>
+                        <PlusMinusBtn
+                          item={item}
+                          handleDecreaseItem={handleDecreaseItem}
+                          handleIncreaseItem={handleIncreaseItem}
+                        />
                       </div>
                     </div>
                   </div>
@@ -102,7 +110,7 @@ export default function Header({
 
             <div className="flex mt-4 px-4 justify-between items-center">
               <span>Subtotal</span>
-              <h4 className="font-semibold">₦22,000</h4>
+              <h4 className="font-semibold">₦{subTotal}</h4>
             </div>
 
             <div className="flex flex-col mt-8 lg:flex-row gap-4 lg:gap-4 lg:w-full mx-auto w-[90%] absolute bottom-4 lg:relative">

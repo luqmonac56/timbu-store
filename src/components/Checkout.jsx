@@ -3,7 +3,7 @@ import vitaminC from "../assets/Vitamin-C-13-Serum.png";
 import cream from "../assets/cream.png";
 import { NavLink } from "react-router-dom";
 
-export default function Checkout({ cartItems }) {
+export default function Checkout({ subTotal,cartItems }) {
   return (
     <section className="px-4 max-w-[1280px] my-4 mx-auto lg:px-8">
       <div>
@@ -14,7 +14,7 @@ export default function Checkout({ cartItems }) {
         </p>
       </div>
       <div className="flex flex-col lg:flex-row justify-between  gap-8">
-        <form className="checkout-form mt-6 flex-1 flex text-[#191919] flex-col gap-3 max-w-[550px]">
+        <form className="checkout-form mt-6 flex-1 flex text-[#191919] flex-col gap-3  max-w-[550px] md:w-[500px] my-0 mx-auto">
           <div className="mainFormDiv">
             <label htmlFor="email">Email Address</label>
             <input id="email" type="email" placeholder="Email Address" />
@@ -48,7 +48,7 @@ export default function Checkout({ cartItems }) {
             <input id="phone" type="email" placeholder="Phone Number" />
           </div>
         </form>
-        <div className="flex-1 w-full max-w-[500px]">
+        <div className="flex-1 w-full max-w-[500px] my-0 mx-auto">
           <div className="bg-[#C6BDDE] rounded-xl py-6 mt-8 ">
             <div className="text-center">
               <h2 className="font-semibold ">Your Order</h2>
@@ -58,26 +58,30 @@ export default function Checkout({ cartItems }) {
             <div className="checkout-items mt-8 flex flex-col gap-4">
               {cartItems.map((item, index) => (
                 <>
-                  <div key={index} className="item flex gap-4 items-center p-2 bg-white rounded-xl w-[80%] lg:w-[90%] mx-auto my-0">
+                  <div
+                    key={index}
+                    className="item flex gap-4 items-center p-2 bg-white rounded-xl w-[80%] lg:w-[90%] mx-auto my-0"
+                  >
                     <img
                       className="w-[73px] h-[73px]"
-                      src={item.image}
+                      src={`https://api.timbu.cloud/images/${item.photos[0].url}`}
                       alt="cream img"
                     />
                     <div className="flex flex-col gap-1 px-2">
-                      <p>{item.description}</p>
-                      <span className="font-semibold">{item.price}</span>
-                      <span>Qty: 1</span>
+                      <p>{item.name}</p>
+                      <span className="font-semibold">
+                        ₦{item.current_price[0].NGN[0]}
+                      </span>
+                      <span>Qty: { item.count}</span>
                     </div>
                   </div>
                 </>
               ))}
-
             </div>
             <div className="mt-4">
               <div className="flex mb-2 px-4 justify-between items-center">
                 <span>Subtotal</span>
-                <h4 className="font-semibold">₦22,000</h4>
+                <h4 className="font-semibold">₦{subTotal}</h4>
               </div>
               <div className="flex mb-2 px-4 justify-between items-center">
                 <span>Shipping fee</span>
