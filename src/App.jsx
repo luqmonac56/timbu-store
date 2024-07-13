@@ -104,7 +104,9 @@ function App() {
     const getData = async () => {
       try {
         const res = await axios.get(
-          `/api/products?organization_id=3f570a4f4cf14dc99651783723c214bf&reverse_sort=false&page=1&size=10&Appid=4CVO1BXR3OYKFD8&Apikey=9bdcaf3291e748d2be179da95010979420240712171430409979`,
+          `/api/products?organization_id=3f570a4f4cf14dc99651783723c214bf&reverse_sort=false&page=1&size=10&Appid=4CVO1BXR3OYKFD8&Apikey=${
+            import.meta.env.VITE_APP_API_KEY
+          }`,
           {
             headers: {
               Accept: "application/json",
