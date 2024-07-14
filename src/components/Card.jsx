@@ -49,7 +49,7 @@ export default function Card({
         <div className="flex justify-between items-start text-xs">
           <p className=" w-[70%]">{item.name}</p>
           {item.current_price && (
-            <p className="font-bold">{item.current_price[0].NGN[0]}</p>
+            <p className="font-bold">₦{item.current_price[0].NGN[0]}</p>
           )}
         </div>
         <div className="flex justify-between items-center">
