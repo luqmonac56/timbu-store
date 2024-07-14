@@ -171,6 +171,9 @@ function App() {
                   handleRemove={handleRemove}
                   likelyItems={likelyItems}
                   clearCart={clearCart}
+                  addToCart={addToCart}
+                  openModal={handleOpenModal}
+                  subTotal={subTotal}
                 />
               }
             />

@@ -10,11 +10,23 @@ export default function Cart({
   handleDecreaseItem,
   handleIncreaseItem,
   clearCart,
+  addToCart,
+  openModal,
+  subTotal
 }) {
   return (
     <section className="max-w-[1280px] my-0 mx-auto px-6 py-4 mt-[2rem] lg:px-10">
       <div className="flex flex-col w-full my-0 mx-auto gap-8 lg:flex-row items-start  justify-between">
         <div className="cart-items lg:w-[50%] my-0 mx-auto">
+          {cartItems.length === 0 ? (
+            <div className="text-center h-[75%] flex">
+              <p className="m-auto font-semibold text-xl">
+                Your Cart is currently empty.
+              </p>
+            </div>
+          ) : (
+            ""
+          )}
           <CartItem
             handleDecreaseItem={handleDecreaseItem}
             handleIncreaseItem={handleIncreaseItem}
@@ -38,12 +50,12 @@ export default function Cart({
           <div className="h-[0.5px] w-full bg-[#121212]"></div>
           <div className="flex px-4 justify-between items-center">
             <span>Subtotal</span>
-            <h4 className="font-semibold">₦12,000</h4>
+            <h4 className="font-semibold">₦{subTotal}</h4>
           </div>
           <div className="h-[0.5px] w-full bg-[#121212]"></div>
           <div className=" font-semibold flex px-4 justify-between items-center">
             <span>Total</span>
-            <h4>₦12,000</h4>
+            <h4>₦{subTotal }</h4>
           </div>
           <NavLink
             className="bg-[#190D40] flex w-[90%] mx-auto my-0 rounded-xl px-4 py-2 text-white"
@@ -60,7 +72,14 @@ export default function Cart({
       <div className="card-section gap-4 ">
         <>
           {likelyItems.map((item, index) => (
-            <Card item={item} index={index} />
+            <Card
+              handleDecreaseItem={handleDecreaseItem}
+              handleIncreaseItem={handleIncreaseItem}
+              item={item}
+              index={index}
+              addToCart={addToCart}
+              openModal={openModal}
+            />
           ))}
         </>
       </div>
