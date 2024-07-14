@@ -12,7 +12,7 @@ export default function Cart({
   clearCart,
   addToCart,
   openModal,
-  subTotal
+  subTotal,
 }) {
   return (
     <section className="max-w-[1280px] my-0 mx-auto px-6 py-4 mt-[2rem] lg:px-10">
@@ -55,7 +55,7 @@ export default function Cart({
           <div className="h-[0.5px] w-full bg-[#121212]"></div>
           <div className=" font-semibold flex px-4 justify-between items-center">
             <span>Total</span>
-            <h4>₦{subTotal }</h4>
+            <h4>₦{subTotal}</h4>
           </div>
           <NavLink
             className="bg-[#190D40] flex w-[90%] mx-auto my-0 rounded-xl px-4 py-2 text-white"

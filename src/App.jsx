@@ -33,7 +33,7 @@ function App() {
         setData(res.data.items.map((arg) => ({ ...arg, count: 1 })));
         setLoading(false);
 
-        console.log(res.data.items);
+        // console.log(res.data.items);
       } catch (error) {
         // console.log(error.message);
         setError(error);
@@ -44,11 +44,10 @@ function App() {
     getData();
   }, [page]);
 
-
   // console.log(error);
   // console.log(data[0].id);
 
-  const [itemNumber, setItemNumber] = useState(1);
+  // const [itemNumber, setItemNumber] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const likelyItems = data.slice(0, 4);
 
@@ -99,6 +98,7 @@ function App() {
     }
     console.log(page);
   };
+
   const handlePrevPage = () => {
     if (page <= 1) {
       setPage(1);
@@ -114,17 +114,17 @@ function App() {
       const itemInCart = prevItems.find((item) => item.id === data.id);
       if (itemInCart) {
         return prevItems.map((item) =>
-          item.id === data.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === data.id ? { ...item, count: item.count + 1 } : item
         );
       } else {
-        return [...prevItems, { ...data, quantity: 1 }];
+        return [...prevItems, { ...data, count: 1 }];
       }
     });
   };
 
   const clearCart = () => {
-    setCartItems([])
-  }
+    setCartItems([]);
+  };
 
   return (
     <>
@@ -148,7 +148,6 @@ function App() {
               element={
                 <Homepage
                   loading={loading}
-                  itemNumber={itemNumber}
                   handleDecreaseItem={handleDecreaseItem}
                   handleIncreaseItem={handleIncreaseItem}
                   addToCart={addToCart}
@@ -164,7 +163,6 @@ function App() {
               path="cart"
               element={
                 <Cart
-                  itemNumber={itemNumber}
                   handleDecreaseItem={handleDecreaseItem}
                   handleIncreaseItem={handleIncreaseItem}
                   cartItems={cartItems}
@@ -183,7 +181,14 @@ function App() {
             />
             <Route
               path="/products/:id"
-              element={<Product addToCart={addToCart} />}
+              element={
+                <Product
+                  handleDecreaseItem={handleDecreaseItem}
+                  handleIncreaseItem={handleIncreaseItem}
+                  addToCart={addToCart}
+                  openModal={handleOpenModal}
+                />
+              }
             />
             <Route path="/thankyou" element={<ThankYou />} />
           </Routes>

@@ -4,7 +4,7 @@ import cream from "../assets/cream.png";
 import PlusMinusBtn from "./PlusMinusBtn";
 import axios from "axios";
 
-const Product = (addToCart, handleDecreaseItem, handleIncreaseItem) => {
+const Product = ({addToCart,openModal, handleDecreaseItem, handleIncreaseItem}) => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   useEffect(() => {
@@ -21,6 +21,8 @@ const Product = (addToCart, handleDecreaseItem, handleIncreaseItem) => {
           }
         );
         setProduct(res.data);
+        setProduct((prev) => ({ ...res.data, count: 1 }));
+        // setProduct(res.data.map((arg) => ({ ...arg, count: 1 })));
       } catch (error) {
         console.log(error.message);
       }
@@ -28,6 +30,14 @@ const Product = (addToCart, handleDecreaseItem, handleIncreaseItem) => {
 
     getProduct();
   }, []);
+
+
+  const doTwoThings = (product) => {
+    openModal();
+    // addToCart(product);
+    console.log(product);
+    console.log(product.count);
+  };
 
   return (
     <section className="lg:w-[1000px] px-4 my-[3rem] mx-auto">
@@ -56,10 +66,14 @@ const Product = (addToCart, handleDecreaseItem, handleIncreaseItem) => {
               various dark spot concerns.
             </p>
           </div>
-          <div className="">
-            {/* <PlusMinusBtn /> */}
+          <div className="flex gap-4">
+            <PlusMinusBtn
+              item={product}
+              handleDecreaseItem={handleDecreaseItem}
+              handleIncreaseItem={handleIncreaseItem}
+            />
             <button
-              onClick={addToCart}
+              onClick={() => doTwoThings(product)}
               className="btn-blue w-[30%] max-w-[180px]"
             >
               Add to Cart

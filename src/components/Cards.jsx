@@ -16,7 +16,6 @@ export default function Cards({
           openModal={openModal}
           addToCart={addToCart}
           item={item}
-          itemNumber={itemNumber}
           handleDecreaseItem={handleDecreaseItem}
           handleIncreaseItem={handleIncreaseItem}
         />

@@ -3,7 +3,6 @@ import Cards from "./Cards";
 import Loader from "./Loader";
 
 export default function Homepage({
-  itemNumber,
   addToCart,
   data,
   openModal,
@@ -27,7 +26,6 @@ export default function Homepage({
                 addToCart={addToCart}
                 data={data}
                 openModal={openModal}
-                itemNumber={itemNumber}
                 handleDecreaseItem={handleDecreaseItem}
                 handleIncreaseItem={handleIncreaseItem}
               />
