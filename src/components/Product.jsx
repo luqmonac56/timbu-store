@@ -21,8 +21,7 @@ const Product = ({addToCart,openModal, handleDecreaseItem, handleIncreaseItem}) 
           }
         );
         setProduct(res.data);
-        setProduct((prev) => ({ ...res.data, count: 1 }));
-        // setProduct(res.data.map((arg) => ({ ...arg, count: 1 })));
+        setProduct((prev) => ({ ...prev, count: 1 }));
       } catch (error) {
         console.log(error.message);
       }
@@ -33,7 +32,7 @@ const Product = ({addToCart,openModal, handleDecreaseItem, handleIncreaseItem}) 
 
 
   const doTwoThings = (product) => {
-    openModal();
+    // openModal();
     // addToCart(product);
     console.log(product);
     console.log(product.count);

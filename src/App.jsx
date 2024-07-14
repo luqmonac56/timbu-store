@@ -33,9 +33,7 @@ function App() {
         setData(res.data.items.map((arg) => ({ ...arg, count: 1 })));
         setLoading(false);
 
-        // console.log(res.data.items);
       } catch (error) {
-        // console.log(error.message);
         setError(error);
         setLoading(false);
       }
@@ -44,10 +42,7 @@ function App() {
     getData();
   }, [page]);
 
-  // console.log(error);
-  // console.log(data[0].id);
 
-  // const [itemNumber, setItemNumber] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const likelyItems = data.slice(0, 4);
 
@@ -56,7 +51,7 @@ function App() {
   const cartNumber = cartItems.length;
 
   const subTotal = cartItems.reduce(
-    (acc, curr) => acc + curr.current_price[0].NGN[0] * curr.count,
+    (acc, curr) => acc + curr.current_price[0]?.NGN[0] * curr.count,
     0
   );
 
@@ -109,18 +104,25 @@ function App() {
     console.log(page);
   };
 
-  const addToCart = (data) => {
-    setCartItems((prevItems) => {
-      const itemInCart = prevItems.find((item) => item.id === data.id);
-      if (itemInCart) {
-        return prevItems.map((item) =>
-          item.id === data.id ? { ...item, count: item.count + 1 } : item
-        );
-      } else {
-        return [...prevItems, { ...data, count: 1 }];
-      }
-    });
-  };
+
+
+const addToCart = (item) => {
+  setCartItems((prevCart) => [...prevCart, item]);
+};
+
+
+  // const addToCart = (data) => {
+  //   setCartItems((prevItems) => {
+  //     const itemInCart = prevItems.find((item) => item.id === data.id);
+  //     if (itemInCart) {
+  //       return prevItems.map((item) =>
+  //         item.id === data.id ? { ...item, count: item.count + 1 } : item
+  //       );
+  //     } else {
+  //       return [...prevItems, { ...data, count: 1 }];
+  //     }
+  //   });
+  // };
 
   const clearCart = () => {
     setCartItems([]);

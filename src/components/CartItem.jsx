@@ -23,7 +23,7 @@ export default function CartItem({
               <p>{item.name}</p>
               <div className="flex flex-row justify-between mt-4 lg:mt-2 items-center lg:items-start lg:flex-col lg:gap-6">
                 <span className="font-semibold">
-                  ₦{item.current_price[0].NGN[0]}
+                  ₦{item.current_price[0]?.NGN[0]}
                   {item.count}
                 </span>
                 <PlusMinusBtn
