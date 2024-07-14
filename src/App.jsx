@@ -32,6 +32,8 @@ function App() {
         );
         setData(res.data.items.map((arg) => ({ ...arg, count: 1 })));
         setLoading(false);
+
+        console.log(res.data.items);
       } catch (error) {
         // console.log(error.message);
         setError(error);
@@ -90,7 +92,7 @@ function App() {
   };
 
   const handleNextPage = () => {
-    if (page > 3) {
+    if (page >= 3) {
       setPage(3);
     } else {
       setPage((prevCount) => prevCount + 1);
@@ -98,7 +100,7 @@ function App() {
     console.log(page);
   };
   const handlePrevPage = () => {
-    if (page < 1) {
+    if (page <= 1) {
       setPage(1);
     } else {
       setPage((prevCount) => prevCount - 1);

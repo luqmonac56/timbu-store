@@ -22,8 +22,6 @@ export default function Card({
     addToCart(item);
   };
 
-
-
   return (
     <>
       <div className="card w-[170px] md:w-[200px] md lg:w-[260px] py-4 px-3">
@@ -50,7 +48,9 @@ export default function Card({
         </NavLink>
         <div className="flex justify-between items-start text-xs">
           <p className=" w-[70%]">{item.name}</p>
-          <p className="font-bold">{item.current_price[0].NGN[0]}</p>
+          {item.current_price && (
+            <p className="font-bold">{item.current_price[0].NGN[0]}</p>
+          )}
         </div>
         <div className="flex justify-between items-center">
           <PlusMinusBtn
