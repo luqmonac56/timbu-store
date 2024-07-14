@@ -59,9 +59,11 @@ function App() {
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (event) => {
     setIsModalOpen(false);
+    event.stopPropagation();
   };
+
   const handleIncreaseItem = (id) => {
     setData((prev) =>
       prev.map((item) =>
@@ -72,6 +74,24 @@ function App() {
 
   const handleDecreaseItem = (id) => {
     setData((prev) =>
+      prev.map((item) =>
+        item.unique_id === id
+          ? { ...item, count: item.count <= 1 ? 1 : item.count - 1 }
+          : item
+      )
+    );
+  };
+
+  const handleIncreaseCartItem = (id) => {
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.unique_id === id ? { ...item, count: item.count + 1 } : item
+      )
+    );
+  };
+
+  const handleDecreaseCartItem = (id) => {
+    setCartItems((prev) =>
       prev.map((item) =>
         item.unique_id === id
           ? { ...item, count: item.count <= 1 ? 1 : item.count - 1 }
@@ -111,18 +131,6 @@ const addToCart = (item) => {
 };
 
 
-  // const addToCart = (data) => {
-  //   setCartItems((prevItems) => {
-  //     const itemInCart = prevItems.find((item) => item.id === data.id);
-  //     if (itemInCart) {
-  //       return prevItems.map((item) =>
-  //         item.id === data.id ? { ...item, count: item.count + 1 } : item
-  //       );
-  //     } else {
-  //       return [...prevItems, { ...data, count: 1 }];
-  //     }
-  //   });
-  // };
 
   const clearCart = () => {
     setCartItems([]);
@@ -139,8 +147,8 @@ const addToCart = (item) => {
           handleOpenModal={handleOpenModal}
           handleRemove={handleRemove}
           isModalOpen={isModalOpen}
-          handleDecreaseItem={handleDecreaseItem}
-          handleIncreaseItem={handleIncreaseItem}
+          handleDecreaseItem={handleDecreaseCartItem}
+          handleIncreaseItem={handleIncreaseCartItem}
           clearCart={clearCart}
         />
         <section>
@@ -165,8 +173,8 @@ const addToCart = (item) => {
               path="cart"
               element={
                 <Cart
-                  handleDecreaseItem={handleDecreaseItem}
-                  handleIncreaseItem={handleIncreaseItem}
+                  handleDecreaseItem={handleDecreaseCartItem}
+                  handleIncreaseItem={handleIncreaseCartItem}
                   cartItems={cartItems}
                   handleRemove={handleRemove}
                   likelyItems={likelyItems}

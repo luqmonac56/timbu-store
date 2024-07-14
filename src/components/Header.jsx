@@ -26,6 +26,7 @@ export default function Header({
   const location = useLocation();
 
   // const cartItems = data.slice(0, 2);
+  console.log(cartItems);
 
   return (
     <>

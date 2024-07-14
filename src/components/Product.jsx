@@ -4,9 +4,14 @@ import cream from "../assets/cream.png";
 import PlusMinusBtn from "./PlusMinusBtn";
 import axios from "axios";
 
-const Product = ({addToCart,openModal, handleDecreaseItem, handleIncreaseItem}) => {
+const Product = ({
+  addToCart,
+  openModal,
+  handleDecreaseItem,
+  handleIncreaseItem,
+}) => {
   const { id } = useParams();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -21,7 +26,14 @@ const Product = ({addToCart,openModal, handleDecreaseItem, handleIncreaseItem}) 
           }
         );
         setProduct(res.data);
-        setProduct((prev) => ({ ...prev, count: 1 }));
+        setProduct((prev) => ({
+          ...prev,
+          count: 1,
+          current_price: [{NGN:[prev.current_price]}] 
+          // current_price[0]?.NGN[0],
+        }));
+
+        console.log(product, "this is product");
       } catch (error) {
         console.log(error.message);
       }
@@ -30,15 +42,28 @@ const Product = ({addToCart,openModal, handleDecreaseItem, handleIncreaseItem}) 
     getProduct();
   }, []);
 
-
   const doTwoThings = (product) => {
-    // openModal();
-    // addToCart(product);
+    openModal();
+    addToCart(product);
     console.log(product);
     console.log(product.count);
   };
 
-  return (
+ 
+  const handleIncreaseProduct = (id) => {
+    setProduct((prev) => ({ ...prev, count: prev.count + 1 }))
+  };
+
+  const handleDecreaseProduct = (id) => {
+    setProduct((prev) => ({ ...prev, count: prev.count - 1 }))
+     
+  };
+
+
+  if (product === null) return null 
+
+  return ( 
+    
     <section className="lg:w-[1000px] px-4 my-[3rem] mx-auto">
       <NavLink className="text-5xl font-black" to={"/"}>
         &larr;
@@ -58,7 +83,7 @@ const Product = ({addToCart,openModal, handleDecreaseItem, handleIncreaseItem}) 
           <div>
             <div className="flex flex-col font-semibold  mb-4 text-2xl gap-4">
               <h2>{product.name}</h2>
-              <p>₦{product.current_price}</p>
+              <p>₦{product.current_price[0].NGN[0]}</p>
             </div>
             <p>
               The Touch Bright & Clear Cream is a concentrated cream targeting
@@ -68,8 +93,8 @@ const Product = ({addToCart,openModal, handleDecreaseItem, handleIncreaseItem}) 
           <div className="flex gap-4">
             <PlusMinusBtn
               item={product}
-              handleDecreaseItem={handleDecreaseItem}
-              handleIncreaseItem={handleIncreaseItem}
+              handleDecreaseItem={handleDecreaseProduct}
+              handleIncreaseItem={handleIncreaseProduct}
             />
             <button
               onClick={() => doTwoThings(product)}
