@@ -26,9 +26,6 @@ export default function Header({
 }) {
   const location = useLocation();
 
-  // const cartItems = data.slice(0, 2);
-  console.log(cartItems);
-
   return (
     <>
       <div className="bg-[#190D40] py-3 px-3 text-center text-white">

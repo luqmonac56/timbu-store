@@ -33,7 +33,7 @@ const Product = ({
           // current_price[0]?.NGN[0],
         }));
 
-        console.log(product, "this is product");
+        // console.log(product, "this is product");
       } catch (error) {
         console.log(error.message);
       }

@@ -114,7 +114,6 @@ function App() {
     } else {
       setPage((prevCount) => prevCount + 1);
     }
-    console.log(page);
   };
 
   const handlePrevPage = () => {
@@ -123,8 +122,6 @@ function App() {
     } else {
       setPage((prevCount) => prevCount - 1);
     }
-
-    console.log(page);
   };
 
 
