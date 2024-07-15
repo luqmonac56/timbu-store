@@ -61,7 +61,10 @@ function App() {
 
   const handleCloseModal = (event) => {
     setIsModalOpen(false);
-    event.stopPropagation();
+  };
+
+  const handleModalContentClick = (event) => {
+    event.stopPropagation(); // Prevent the modal from closing when clicking inside the modal content
   };
 
   const handleIncreaseItem = (id) => {
@@ -150,6 +153,7 @@ const addToCart = (item) => {
           handleDecreaseItem={handleDecreaseCartItem}
           handleIncreaseItem={handleIncreaseCartItem}
           clearCart={clearCart}
+          handleModalContentClick = {handleModalContentClick}
         />
         <section>
           <Routes>

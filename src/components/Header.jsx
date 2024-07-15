@@ -22,6 +22,7 @@ export default function Header({
   handleRemove,
   cartItems,
   clearCart,
+  handleModalContentClick,
 }) {
   const location = useLocation();
 
@@ -76,6 +77,7 @@ export default function Header({
           cartNumber={cartNumber}
           isOpen={isModalOpen}
           onClose={handleCloseModal}
+          handleModalContentClick={handleModalContentClick}
         >
           <>
             {cartItems.length === 0 ? (

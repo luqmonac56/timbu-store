@@ -5,7 +5,6 @@ export default function Cards({
   addToCart,
   data,
   openModal,
-  itemNumber,
   handleDecreaseItem,
   handleIncreaseItem,
 }) {
