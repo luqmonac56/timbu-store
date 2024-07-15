@@ -33,7 +33,7 @@ export default function Homepage({
           </div>
         </section>
 
-        <div className="flex gap-2 w-[100px] my-0 mx-auto mt-8 ">
+        <div className="flex gap-2 justify-center lg:w-[100px] my-0 mx-auto mt-8 ">
           <button onClick={handlePrevPage} className="btn-blue px-4">
             prev
           </button>
